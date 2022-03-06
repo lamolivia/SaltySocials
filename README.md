@@ -1,6 +1,6 @@
 # SaltySocials
 
-## A web app for grouping user social media feeds based on shared dislikes for specified topics
+A web app for grouping user social media feeds based on shared dislikes for specified topics
 
 ## Instructions to deploy
 
