@@ -1,45 +1,49 @@
-import os
+import os, time
 import openapi
 import requests
 import tweepy
 import configparser
+import openai
 
-from .settings import OPENAI_API_KEY
+from .settings import OPENAI_API_KEY, BEARER_TOKEN
 
 # helper for approved_tweets
-def bad_tweet(tweet, keywords):
-    tweet = tweet.get('text')
+def is_target_tweet(tweet, keywords):
 
-    for keyword in keywords:
-        if keyword in tweet:
-            return False
+    openai.api_key = OPENAI_API_KEY
+    response = openai.Completion.create(
+    engine="text-davinci-001",
+    prompt=f"Decide whether a Tweet's sentiment is positive, neutral, or negative. Tweet: {tweet}",
+    temperature=0,
+    max_tokens=60,
+    top_p=1.0,
+    frequency_penalty=0,
+    presence_penalty=0.0
+    )
 
-    return True
+    sentiment = response['choices'][0]['text']
+    print(sentiment)
+    return 'negative' in sentiment.strip()
 
-# grabs most recent n tweets; if the tweet contains any of the keywords, we do not append to
-# list of approved tweets
+# grabs most recent n tweets; if the tweet contains any of the keywords and the
+# sentiment is negative then we add to list of tweets to include on recommendation view
 def approved_tweets(keywords):
 
     retlist = []
+    client = tweepy.Client(bearer_token=BEARER_TOKEN)
 
-    # read config
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    
-    api_key = config['twitter']['api_key']
-    api_key_secret = config['twitter']['api_key_secret']
+    for keyword in keywords:
+        response = client.search_recent_tweets(query=f"{keyword} -is:retweet", max_results=10)
+        if response.data:
+            tweets = [tweet.text for tweet in response.data]
+            ids = [tweet.id for tweet in response.data]
+            print(ids)
 
-    access_token = config['twitter']['access_token']
-    access_token_secret = config['twitter']['access_token_secret']
+            for i in range (0, len(tweets)):
+                if is_target_tweet(tweets[i], keywords):
+                    retlist.append(ids[i])
+                    print(True)
+                time.sleep(0.25)
 
-    # authentication
-    auth = tweepy.OAuthHandler(api_key, api_key_secret)
-    auth.set_access_token(access_token, access_token_secret)
-
-    api = tweepy.API(auth)
-
-    tweets = api.home_timeline()
-
-    for tweet in tweets:
-        if not bad_tweet(tweet, keywords):
-            retlist.append(tweet)
+    print(retlist)
+    return retlist
