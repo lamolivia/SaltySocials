@@ -14,28 +14,29 @@ A web app for grouping user social media feeds based on shared dislikes for spec
 
 1. Create a directory in location of choice to launch app from. 
 
-   `mkdir myApp`. 
+   `mkdir myApp` 
   
 2. Change into the directory and create a virtual environment, then activate. 
 
-   `cd myApp`. 
-   `virtualenv venv`. 
+   `cd myApp` 
+   
+   `virtualenv venv` 
   
    on Mac:      
-    `source bin/activate`. 
+    `source bin/activate` 
   
    on Windows:  
-   `<pathtofolder>\Scripts\activate`. 
+   `<pathtofolder>\Scripts\activate` 
   
 3. Clone the repo into your virtual environment, and install requirements. 
    
-   `git clone https://github.com/lamolivia/SaltySocials/`. 
+   `git clone https://github.com/lamolivia/SaltySocials/` 
    
-   `cd venv`. 
+   `cd venv` 
    
-   `pip install -r requirements.txt`. 
+   `pip install -r requirements.txt` 
   
 4. Move into app directory (where your manage.py file is) and run the following command:   
 
-   `python3 manage.py runserver`.  
+   `python3 manage.py runserver`  
  
