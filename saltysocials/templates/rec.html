@@ -1,0 +1,119 @@
+<!-- For Bootstrap -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scada&display=swap" rel="stylesheet">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="../static/main.css"/>
+
+<div class="container-fluid">
+    <div class="row text-center">
+        <h1 id="header">Salty Socials</h1>
+    </div>
+
+    <!-- <div class="mx-auto" style="width: 80%">
+        <div class="spinner-border text-primary" id="buffer" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div> -->
+
+    <div class="mx-auto" style="width: 80%">
+        <div id="tw1" ></div>
+        <div id="tw2" ></div>
+        <div id="tw3" ></div>
+        <div id="tw4" ></div>
+        <div id="tw5" ></div>
+        <div id="tw6" ></div>
+        <div id="tw7" ></div>
+        <div id="tw8" ></div>
+        <div id="tw9" ></div>
+        <div id="tw10" ></div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center" >
+            <button type="button" class="btn btn-primary" style="margin: 5px" onclick="reload">
+                <h3 class="sub">Load More!</h3>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 id="footer-rec">
+            <div class="row" style="height:5%">
+                <div class="col-sm-9"></div>
+                <!-- <div class="col-sm-2 align-self-center">
+                    <h3 class="option">change filters</h3>
+                </div>
+
+                <div class="col-sm-1 align-self-center">
+                    <h3 class="option">logout</h3>
+                </div> -->
+
+                <span>
+                    <div style="float: right">
+                        <button type="button" class="btn btn-primary" style="margin: 5px;" onclick="reload">
+                            <h3 class="option">change filters</h3>
+                        </button>
+
+
+                        <button type="button" class="btn btn-primary" style="margin: 5px; " onclick="logout">
+                            <h3 class="option">logout</h3>
+                        </button>
+                    </div>
+                </span>
+            </div>
+        </h1>
+    </div>
+</div>
+
+<!-- load more tweets -->
+<script>
+    function reload() {
+
+    }
+
+</script>
+
+<!-- setup to embed twitter -->
+<script sync src="https://platform.twitter.com/widgets.js"></script>
+<script>
+    window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  
+    t._e = [];
+    t.ready = function(f) {
+      t._e.push(f);
+    };
+  
+    return t;
+  }(document, "script", "twitter-wjs"));
+
+  //to embed tweet!!! first arg is twitter id
+  twttr.widgets.createTweet('20',document.getElementById('tw1'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('21',document.getElementById('tw2'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('22',document.getElementById('tw3'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('23',document.getElementById('tw4'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('24',document.getElementById('tw5'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('25',document.getElementById('tw6'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('26',document.getElementById('tw7'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('27',document.getElementById('tw8'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('28',document.getElementById('tw9'),{theme: 'light'}, {align: 'center'});
+  twttr.widgets.createTweet('29',document.getElementById('tw10'),{theme: 'light'}, {align: 'center'});
+  </script>
