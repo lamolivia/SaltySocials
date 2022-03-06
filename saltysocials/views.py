@@ -11,7 +11,7 @@ def rec_view(request, **kwargs):
     # term = kwargs.get('term').upper() # for when front end can send to us
     # keywords = OPTIONS.get(term)
 
-    keywords = OPTIONS.get('love')
+    keywords = OPTIONS.get('LOVE')
 
     tweets = approved_tweets(keywords)
 
