@@ -34,7 +34,7 @@ A web app for grouping user social media feeds based on shared dislikes for spec
    
    `cd venv` 
    
-   `pip install -r requirements.txt` 
+    `pip install -r requirements.txt` 
   
 4. Move into app directory (where your manage.py file is) and run the following command:   
 
